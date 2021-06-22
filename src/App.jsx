@@ -12,6 +12,11 @@ function App() {
     });
   };
 
+  const deleteTodo = (todoId) => {
+    const newTodoList = todoList.filter((todo) => todo.id !== todoId);
+    setTodoList(newTodoList);
+  };
+
   useEffect(() => {
     getAllRequest().then((json) => setTodoList(json));
   }, []);
@@ -19,7 +24,7 @@ function App() {
   return (
     <>
       <AddForm onSave={updateList} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onDelete={deleteTodo} />
     </>
   );
 }
