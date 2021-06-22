@@ -28,17 +28,23 @@ function App() {
       alert("값을 입력하세요");
       return;
     }
-    // todoList에 추가하기
-    setTodoList([
-      {
-        id: Date.now(),
+
+    fetch("https://jsonplaceholder.typicode.com/todos", {
+      method: "POST",
+      body: JSON.stringify({
         title,
         completed: false,
         userId: USER_ID,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
       },
-      ...todoList,
-    ]);
-    setTitle("");
+    })
+      .then((response) => response.json()) // api 서버에 요청하여 응답이 오면 클라이언트의 todo 목록 갱신
+      .then((todoData) => {
+        setTodoList([todoData, ...todoList]);
+        setTitle("");
+      });
   };
 
   return (
