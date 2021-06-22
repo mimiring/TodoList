@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AddForm from "./AddForm";
 import { addRequset, getAllRequest } from "./services/request";
-import TodoList from "./services/TodoList";
+import TodoList from "./TodoList";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
