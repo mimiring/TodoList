@@ -1,6 +1,10 @@
 import React from "react";
 
-const Todo = ({ todo, onDelete }) => {
+const Todo = ({ todo, onToggle, onDelete }) => {
+  const handleToggleClick = () => {
+    onToggle(todo.id);
+  };
+
   const handleDeleteClick = () => {
     onDelete(todo.id);
   };
@@ -8,6 +12,9 @@ const Todo = ({ todo, onDelete }) => {
   return (
     <li key={todo.id}>
       {todo.title}
+      <button onClick={handleToggleClick}>
+        {todo.completed ? "했음" : "안했음"}
+      </button>
       <button onClick={handleDeleteClick}>삭제</button>
     </li>
   );

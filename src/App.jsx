@@ -17,6 +17,20 @@ function App() {
     setTodoList(newTodoList);
   };
 
+  const toggleCompleted = (todoId) => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === todoId) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      } else {
+        return todo;
+      }
+    });
+    setTodoList(newTodoList);
+  };
+
   useEffect(() => {
     getAllRequest().then((json) => setTodoList(json));
   }, []);
@@ -24,7 +38,11 @@ function App() {
   return (
     <>
       <AddForm onSave={updateList} />
-      <TodoList todoList={todoList} onDelete={deleteTodo} />
+      <TodoList
+        todoList={todoList}
+        onToggle={toggleCompleted}
+        onDelete={deleteTodo}
+      />
     </>
   );
 }
