@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AddForm from "./AddForm";
 import { addRequset, getAllRequest } from "./services/request";
+import TodoList from "./services/TodoList";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -18,12 +19,7 @@ function App() {
   return (
     <>
       <AddForm onSave={updateList} />
-
-      <ul>
-        {todoList.map((todoItem) => (
-          <li key={todoItem.id}>{todoItem.title}</li>
-        ))}
-      </ul>
+      <TodoList todoList={todoList} />
     </>
   );
 }
