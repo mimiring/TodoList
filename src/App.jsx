@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddForm from "./AddForm";
 import {
   addRequset,
+  deleteTodoRequest,
   getAllRequest,
   updateCompletedRequest,
 } from "./services/request";
@@ -20,8 +21,12 @@ function App() {
   };
 
   const deleteTodo = (todoId) => {
-    const newTodoList = todoList.filter((todo) => todo.id !== todoId);
-    setTodoList(newTodoList);
+    deleteTodoRequest(todoId).then(() => {
+      const newTodoList = todoList.filter((todo) => {
+        return todo.id !== todoId;
+      });
+      setTodoList(newTodoList);
+    });
   };
 
   const toggleCompleted = (todoId) => {

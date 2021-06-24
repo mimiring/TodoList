@@ -23,36 +23,6 @@
       "id": 4,
       "title": "et porro tempora",
       "completed": true
-    },
-    {
-      "title": "ㅁㄴㅇㄹ",
-      "completed": false,
-      "userId": 123456789,
-      "id": 5
-    },
-    {
-      "title": "ㅁ",
-      "completed": true,
-      "userId": 123456789,
-      "id": 6
-    },
-    {
-      "title": "ㄴ",
-      "completed": false,
-      "userId": 123456789,
-      "id": 7
-    },
-    {
-      "title": "ㅇ",
-      "completed": false,
-      "userId": 123456789,
-      "id": 8
-    },
-    {
-      "title": "ㄹ",
-      "completed": false,
-      "userId": 123456789,
-      "id": 9
     }
   ]
 }
