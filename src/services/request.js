@@ -1,5 +1,6 @@
 const URL = "http://localhost:3001/todos";
 const POST = "POST";
+const PATCH = "PATCH";
 
 export const getAllRequest = () => {
   return fetch(`${URL}?_sort=id&_order=DESC`).then((response) =>
@@ -21,4 +22,16 @@ export const addRequset = (title) => {
       "Content-type": "application/json; charset=UTF-8",
     },
   }).then((response) => response.json());
+};
+
+export const updateCompletedRequest = (todoId, completed) => {
+  return fetch(`${URL}/${todoId}`, {
+    method: PATCH,
+    body: JSON.stringify({
+      completed,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
 };

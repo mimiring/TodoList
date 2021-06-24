@@ -32,7 +32,7 @@
     },
     {
       "title": "ㅁ",
-      "completed": false,
+      "completed": true,
       "userId": 123456789,
       "id": 6
     },

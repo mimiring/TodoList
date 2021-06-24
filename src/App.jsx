@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import AddForm from "./AddForm";
-import { addRequset, getAllRequest } from "./services/request";
+import {
+  addRequset,
+  getAllRequest,
+  updateCompletedRequest,
+} from "./services/request";
 import TodoList from "./TodoList";
 import UpdateForm from "./UpdateForm";
 
@@ -21,17 +25,18 @@ function App() {
   };
 
   const toggleCompleted = (todoId) => {
+    let completed;
     const newTodoList = todoList.map((todo) => {
       if (todo.id === todoId) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-      } else {
-        return todo;
+        todo.completed = !todo.completed;
+        completed = todo.completed;
       }
+      return todo;
     });
-    setTodoList(newTodoList);
+
+    updateCompletedRequest(todoId, completed).then(() =>
+      setTodoList(newTodoList)
+    );
   };
 
   const handleUpdateClick = (todo) => {
