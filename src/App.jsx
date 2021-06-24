@@ -39,6 +39,10 @@ function App() {
     setUpdateVisible(true);
   };
 
+  const handleCloseClick = () => {
+    setUpdateVisible(false);
+  };
+
   const updateTodoTitle = (title) => {
     const newTodoList = todoList.map((todo) => {
       if (todo.id === target.id) {
@@ -62,7 +66,11 @@ function App() {
     <>
       <AddForm onSave={addTodo} />
       {isUpdateVisible && (
-        <UpdateForm title={target.title} onUpdate={updateTodoTitle} />
+        <UpdateForm
+          title={target.title}
+          onUpdate={updateTodoTitle}
+          handleCloseClick={handleCloseClick}
+        />
       )}
       <TodoList
         todoList={todoList}

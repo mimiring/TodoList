@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function UpdateForm({ title, onUpdate }) {
+function UpdateForm({ title, onUpdate, handleCloseClick }) {
   const [newTitle, setNewTitle] = useState(title);
 
   const handleTitleChange = (e) => {
@@ -21,6 +21,7 @@ function UpdateForm({ title, onUpdate }) {
       <h3>수정할 제목</h3>
       <input onChange={handleTitleChange} value={newTitle} />
       <button onClick={handleSaveClick}>저장</button>
+      <button onClick={handleCloseClick}>닫기</button>
     </div>
   );
 }
