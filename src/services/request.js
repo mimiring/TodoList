@@ -2,7 +2,9 @@ const URL = "http://localhost:3001/todos";
 const POST = "POST";
 
 export const getAllRequest = () => {
-  return fetch(URL).then((response) => response.json());
+  return fetch(`${URL}?_sort=id&_order=DESC`).then((response) =>
+    response.json()
+  ); // id순으로 내림차순 정렬
 };
 
 const USER_ID = 123456789;
