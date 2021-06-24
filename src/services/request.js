@@ -1,4 +1,4 @@
-const URL = "https://jsonplaceholder.typicode.com/todos";
+const URL = "http://localhost:3001/todos";
 const POST = "POST";
 
 export const getAllRequest = () => {
