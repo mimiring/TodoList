@@ -1,27 +1,39 @@
 import React, { useState } from "react";
 
-function UpdateForm({ title, onUpdate, handleCloseClick }) {
-  const [newTitle, setNewTitle] = useState(title);
+function UpdateForm({ todo, onUpdate, onClose }) {
+  const [newTodo, setNewTodo] = useState(todo);
 
-  const handleTitleChange = (e) => {
-    setNewTitle(e.target.value);
+  const handleChange = (e) => {
+    setNewTodo({ ...newTodo, [e.target.id]: e.target.value });
   };
 
   const handleSaveClick = () => {
-    if (title.length === 0) {
+    if (newTodo.title.length === 0) {
       alert("제목을 입력해주세요.");
       return;
     }
 
-    onUpdate(newTitle);
+    onUpdate(newTodo);
+    onClose();
   };
 
   return (
     <div>
       <h3>수정할 제목</h3>
-      <input onChange={handleTitleChange} value={newTitle} />
+      <input id="title" onChange={handleChange} value={newTodo.title} />
+      <select id="status" onChange={handleChange}>
+        <option value="todo" selected={newTodo.status === "todo"}>
+          To Do
+        </option>
+        <option value="in-progress" selected={newTodo.status === "in-progress"}>
+          In Progress
+        </option>
+        <option value="done" selected={newTodo.status === "done"}>
+          Done
+        </option>
+      </select>
       <button onClick={handleSaveClick}>저장</button>
-      <button onClick={handleCloseClick}>닫기</button>
+      <button onClick={onClose}>닫기</button>
     </div>
   );
 }

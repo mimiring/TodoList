@@ -1,7 +1,7 @@
 const URL = "http://localhost:3001/todos";
 const POST = "POST";
-const PATCH = "PATCH";
 const DELETE = "DELETE";
+const PUT = "PUT";
 
 export const getAllRequest = () => {
   return fetch(`${URL}?_sort=id&_order=DESC`).then((response) =>
@@ -25,20 +25,18 @@ export const addRequset = (title) => {
   }).then((response) => response.json());
 };
 
-export const updateCompletedRequest = (todoId, completed) => {
-  return fetch(`${URL}/${todoId}`, {
-    method: PATCH,
-    body: JSON.stringify({
-      completed,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-};
-
 export const deleteTodoRequest = (todoId) => {
   return fetch(`${URL}/${todoId}`, {
     method: DELETE,
+  });
+};
+
+export const updateRequest = (todo) => {
+  return fetch(`${URL}/${todo.id}`, {
+    method: PUT,
+    body: JSON.stringify(todo),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
   });
 };

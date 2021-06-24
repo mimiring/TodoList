@@ -1,22 +1,19 @@
 import React from "react";
 
-const Todo = ({ todo, onToggle, onDelete, onEditClick }) => {
-  const handleToggleClick = () => {
-    onToggle(todo.id);
-  };
-
+const Todo = ({ todo, onDelete, onEditClick }) => {
   const handleDeleteClick = () => {
     onDelete(todo.id);
+  };
+
+  const handleEditClick = () => {
+    onEditClick(todo);
   };
 
   return (
     <>
       <li key={todo.id}>
-        {todo.title}
-        <button onClick={handleToggleClick}>
-          {todo.completed ? "했음" : "안했음"}
-        </button>
-        <button onClick={() => onEditClick(todo)}>수정</button>
+        {todo.status} | {todo.title}
+        <button onClick={handleEditClick}>수정</button>
         <button onClick={handleDeleteClick}>삭제</button>
       </li>
     </>

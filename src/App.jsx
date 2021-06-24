@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import AddForm from "./AddForm";
 import {
   addRequset,
   deleteTodoRequest,
   getAllRequest,
-  updateCompletedRequest,
+  updateRequest,
 } from "./services/request";
 import TodoList from "./TodoList";
+import AddForm from "./AddForm";
 import UpdateForm from "./UpdateForm";
 
 function App() {
@@ -20,6 +20,19 @@ function App() {
     });
   };
 
+  const updateTodo = (newTodo) => {
+    updateRequest(newTodo).then(() => {
+      const newTodoList = todoList.map((todo) => {
+        if (todo.id === newTodo.id) {
+          return newTodo;
+        }
+        return todo;
+      });
+      setTodoList(newTodoList);
+      setTarget(null);
+    });
+  };
+
   const deleteTodo = (todoId) => {
     deleteTodoRequest(todoId).then(() => {
       const newTodoList = todoList.filter((todo) => {
@@ -29,42 +42,12 @@ function App() {
     });
   };
 
-  const toggleCompleted = (todoId) => {
-    let completed;
-    const newTodoList = todoList.map((todo) => {
-      if (todo.id === todoId) {
-        todo.completed = !todo.completed;
-        completed = todo.completed;
-      }
-      return todo;
-    });
-
-    updateCompletedRequest(todoId, completed).then(() =>
-      setTodoList(newTodoList)
-    );
-  };
-
-  const handleUpdateClick = (todo) => {
+  const openEditForm = (todo) => {
     setTarget(todo);
     setUpdateVisible(true);
   };
 
-  const handleCloseClick = () => {
-    setUpdateVisible(false);
-  };
-
-  const updateTodoTitle = (title) => {
-    const newTodoList = todoList.map((todo) => {
-      if (todo.id === target.id) {
-        return {
-          ...todo,
-          title,
-        };
-      } else {
-        return todo;
-      }
-    });
-    setTodoList(newTodoList);
+  const closeEditForm = () => {
     setUpdateVisible(false);
   };
 
@@ -77,16 +60,15 @@ function App() {
       <AddForm onSave={addTodo} />
       {isUpdateVisible && (
         <UpdateForm
-          title={target.title}
-          onUpdate={updateTodoTitle}
-          handleCloseClick={handleCloseClick}
+          todo={target}
+          onUpdate={updateTodo}
+          onClose={closeEditForm}
         />
       )}
       <TodoList
         todoList={todoList}
-        onToggle={toggleCompleted}
         onDelete={deleteTodo}
-        onEditClick={handleUpdateClick}
+        onEditClick={openEditForm}
       />
     </>
   );

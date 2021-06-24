@@ -4,25 +4,19 @@
       "userId": 1,
       "id": 1,
       "title": "delectus aut autem",
-      "completed": false
+      "status": "todo"
     },
     {
       "userId": 1,
       "id": 2,
-      "title": "quis ut nam facilis et officia qui",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "fugiat veniam minus",
-      "completed": false
+      "title": "peaches",
+      "status": "in-progress"
     },
     {
       "userId": 1,
       "id": 4,
       "title": "et porro tempora",
-      "completed": true
+      "status": "done"
     }
   ]
 }
