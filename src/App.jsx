@@ -65,8 +65,21 @@ function App() {
           onClose={closeEditForm}
         />
       )}
+      <h2>To Do</h2>
       <TodoList
-        todoList={todoList}
+        todoList={todoList.filter((todo) => todo.status === "todo")}
+        onDelete={deleteTodo}
+        onEditClick={openEditForm}
+      />
+      <h2>In Progress</h2>
+      <TodoList
+        todoList={todoList.filter((todo) => todo.status === "in-progress")}
+        onDelete={deleteTodo}
+        onEditClick={openEditForm}
+      />
+      <h2>Done</h2>
+      <TodoList
+        todoList={todoList.filter((todo) => todo.status === "done")}
         onDelete={deleteTodo}
         onEditClick={openEditForm}
       />

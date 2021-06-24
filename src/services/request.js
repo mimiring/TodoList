@@ -16,7 +16,7 @@ export const addRequset = (title) => {
     method: POST,
     body: JSON.stringify({
       title,
-      completed: false,
+      status: "todo",
       userId: USER_ID,
     }),
     headers: {
