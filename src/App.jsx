@@ -5,9 +5,9 @@ import {
   getAllRequest,
   updateRequest,
 } from "./services/request";
-import TodoList from "./TodoList";
-import AddForm from "./AddForm";
-import UpdateForm from "./UpdateForm";
+import TodoList from "./components/TodoList";
+import AddForm from "./components/AddForm";
+import UpdateForm from "./components/UpdateForm";
 import { STATUS } from "./constants";
 
 function App() {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CATEGORY, STATUS } from "./constants";
+import { CATEGORY, STATUS } from "../constants";
 
 function UpdateForm({ todo, onUpdate, onClose }) {
   const [newTodo, setNewTodo] = useState(todo);

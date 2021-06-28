@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CATEGORY, STATUS } from "./constants";
+import { CATEGORY, STATUS } from "../constants";
 
 const baseTodo = {
   title: "",
