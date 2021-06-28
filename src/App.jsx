@@ -14,8 +14,8 @@ function App() {
   const [target, setTarget] = useState(null);
   const [isUpdateVisible, setUpdateVisible] = useState(false);
 
-  const addTodo = (title) => {
-    return addRequset(title).then((todoData) => {
+  const addTodo = (todo) => {
+    return addRequset(todo).then((todoData) => {
       setTodoList([todoData, ...todoList]);
     });
   };

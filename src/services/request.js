@@ -9,17 +9,10 @@ export const getAllRequest = () => {
   ); // id순으로 내림차순 정렬
 };
 
-const USER_ID = 123456789;
-
-export const addRequset = (title) => {
+export const addRequset = (todo) => {
   return fetch(URL, {
     method: POST,
-    body: JSON.stringify({
-      title,
-      status: "todo",
-      userId: USER_ID,
-      category: "etc",
-    }),
+    body: JSON.stringify(todo),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
