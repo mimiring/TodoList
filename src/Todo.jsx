@@ -12,7 +12,7 @@ const Todo = ({ todo, onDelete, onEditClick }) => {
   return (
     <>
       <li key={todo.id}>
-        {todo.status} | {todo.title}
+        {todo.category} | {todo.title}
         <button onClick={handleEditClick}>수정</button>
         <button onClick={handleDeleteClick}>삭제</button>
       </li>

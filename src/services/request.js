@@ -18,6 +18,7 @@ export const addRequset = (title) => {
       title,
       status: "todo",
       userId: USER_ID,
+      category: "etc",
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",

@@ -32,6 +32,31 @@ function UpdateForm({ todo, onUpdate, onClose }) {
           Done
         </option>
       </select>
+
+      <select id="category" onChange={handleChange}>
+        <option
+          value="self-development"
+          selected={newTodo.category === "self-development"}
+        >
+          자기개발
+        </option>
+        <option value="hobby" selected={newTodo.category === "hobby"}>
+          취미
+        </option>
+        <option value="work" selected={newTodo.category === "work"}>
+          업무
+        </option>
+        <option value="house-work" selected={newTodo.category === "house-work"}>
+          집안일
+        </option>
+        <option value="etc" selected={newTodo.category === "etc"}>
+          기타
+        </option>
+      </select>
+
+      <label htmlFor="note">노트</label>
+      <textarea id="note" value={newTodo.note} onChange={handleChange} />
+
       <button onClick={handleSaveClick}>저장</button>
       <button onClick={onClose}>닫기</button>
     </div>
