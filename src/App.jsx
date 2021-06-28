@@ -68,18 +68,22 @@ function App() {
       <h2>To Do</h2>
       <TodoList
         todoList={todoList.filter((todo) => todo.status === "todo")}
+        todoStatus={"todo"}
         onDelete={deleteTodo}
         onEditClick={openEditForm}
       />
+      {console.log()}
       <h2>In Progress</h2>
       <TodoList
         todoList={todoList.filter((todo) => todo.status === "in-progress")}
+        todoStatus={"in-progress"}
         onDelete={deleteTodo}
         onEditClick={openEditForm}
       />
       <h2>Done</h2>
       <TodoList
         todoList={todoList.filter((todo) => todo.status === "done")}
+        todoStatus={"done"}
         onDelete={deleteTodo}
         onEditClick={openEditForm}
       />
