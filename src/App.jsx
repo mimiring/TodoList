@@ -8,6 +8,7 @@ import {
 import TodoList from "./TodoList";
 import AddForm from "./AddForm";
 import UpdateForm from "./UpdateForm";
+import { STATUS } from "./constants";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -67,7 +68,7 @@ function App() {
       )}
       <h2>To Do</h2>
       <TodoList
-        todoList={todoList.filter((todo) => todo.status === "todo")}
+        todoList={todoList.filter((todo) => todo.status === STATUS.TODO)}
         message="할 일을 모두 마쳤어요"
         onDelete={deleteTodo}
         onEditClick={openEditForm}
@@ -75,14 +76,14 @@ function App() {
       {console.log()}
       <h2>In Progress</h2>
       <TodoList
-        todoList={todoList.filter((todo) => todo.status === "in-progress")}
+        todoList={todoList.filter((todo) => todo.status === STATUS.INPROGRESS)}
         message="진행중인 일을 모두 마쳤어요"
         onDelete={deleteTodo}
         onEditClick={openEditForm}
       />
       <h2>Done</h2>
       <TodoList
-        todoList={todoList.filter((todo) => todo.status === "done")}
+        todoList={todoList.filter((todo) => todo.status === STATUS.DONE)}
         message="완료한 일이 아직 없네요"
         onDelete={deleteTodo}
         onEditClick={openEditForm}

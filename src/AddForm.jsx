@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { CATEGORY, STATUS } from "./constants";
 
 const baseTodo = {
   title: "",
-  status: "todo",
-  category: "empty",
+  status: STATUS.TODO,
+  category: CATEGORY.EMPTY,
   note: "",
 };
 
@@ -19,7 +20,7 @@ const AddForm = ({ onSave }) => {
       alert("제목을 입력해주세요.");
       return;
     }
-    if (todo.category === "empty") {
+    if (todo.category === CATEGORY.EMPTY) {
       alert("카테고리는 반드시 선택해야 합니다.");
       return;
     }
@@ -38,37 +39,53 @@ const AddForm = ({ onSave }) => {
         placeholder="제목을 입력하세요"
       />
       <select id="status" onChange={handleChange}>
-        <option value="todo" selected={todo.status === "todo"}>
+        <option value={STATUS.TODO} selected={todo.status === STATUS.TODO}>
           To Do
         </option>
-        <option value="in-progress" selected={todo.status === "in-progress"}>
+        <option
+          value={STATUS.INPROGRESS}
+          selected={todo.status === STATUS.INPROGRESS}
+        >
           In Progress
         </option>
-        <option value="done" selected={todo.status === "done"}>
+        <option value={STATUS.DONE} selected={todo.status === STATUS.DONE}>
           Done
         </option>
       </select>
 
       <select id="category" onChange={handleChange}>
-        <option value="empty" selected={todo.category === "empty"} disabled>
+        <option
+          value={CATEGORY.EMPTY}
+          selected={todo.category === CATEGORY.EMPTY}
+          disabled
+        >
           선택하세요
         </option>
         <option
-          value="self-development"
-          selected={todo.category === "self-development"}
+          value={CATEGORY.SELF_DEVELOPMENT}
+          selected={todo.category === CATEGORY.SELF_DEVELOPMENT}
         >
           자기개발
         </option>
-        <option value="hobby" selected={todo.category === "hobby"}>
+        <option
+          value={CATEGORY.HOBBY}
+          selected={todo.category === CATEGORY.HOBBY}
+        >
           취미
         </option>
-        <option value="work" selected={todo.category === "work"}>
+        <option
+          value={CATEGORY.WORK}
+          selected={todo.category === CATEGORY.WORK}
+        >
           업무
         </option>
-        <option value="house-work" selected={todo.category === "house-work"}>
+        <option
+          value={CATEGORY.HOUSE_WORK}
+          selected={todo.category === CATEGORY.HOUSE_WORK}
+        >
           집안일
         </option>
-        <option value="etc" selected={todo.category === "etc"}>
+        <option value={CATEGORY.ETC} selected={todo.category === CATEGORY.ETC}>
           기타
         </option>
       </select>

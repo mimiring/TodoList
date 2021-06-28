@@ -1,8 +1,19 @@
-const TODO = "todo";
-const INPROGRESS = "in-progress";
-const DONE = "done";
+export const STATUS = {
+  TODO: "todo",
+  INPROGRESS: "in-progress",
+  DONE: "done",
+};
 
-const HTTP = {
+export const CATEGORY = {
+  SELF_DEVELOPMENT: "self-development",
+  HOBBY: "hobby",
+  WORK: "work",
+  HOUSE_WORK: "house-work",
+  ETC: "etc",
+  EMPTY: "empty",
+};
+
+export const HTTP = {
   PATCH: "PATCH",
   POST: "POST",
   PUT: "PUT",

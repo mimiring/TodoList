@@ -1,7 +1,6 @@
+import { HTTP } from "../constants";
+
 const URL = "http://localhost:3001/todos";
-const POST = "POST";
-const DELETE = "DELETE";
-const PUT = "PUT";
 
 export const getAllRequest = () => {
   return fetch(`${URL}?_sort=id&_order=DESC`).then((response) =>
@@ -11,7 +10,7 @@ export const getAllRequest = () => {
 
 export const addRequset = (todo) => {
   return fetch(URL, {
-    method: POST,
+    method: HTTP.POST,
     body: JSON.stringify(todo),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -21,13 +20,13 @@ export const addRequset = (todo) => {
 
 export const deleteTodoRequest = (todoId) => {
   return fetch(`${URL}/${todoId}`, {
-    method: DELETE,
+    method: HTTP.DELETE,
   });
 };
 
 export const updateRequest = (todo) => {
   return fetch(`${URL}/${todo.id}`, {
-    method: PUT,
+    method: HTTP.PUT,
     body: JSON.stringify(todo),
     headers: {
       "Content-type": "application/json; charset=UTF-8",

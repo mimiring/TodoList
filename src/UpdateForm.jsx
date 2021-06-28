@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CATEGORY, STATUS } from "./constants";
 
 function UpdateForm({ todo, onUpdate, onClose }) {
   const [newTodo, setNewTodo] = useState(todo);
@@ -22,34 +23,49 @@ function UpdateForm({ todo, onUpdate, onClose }) {
       <h3>수정할 제목</h3>
       <input id="title" onChange={handleChange} value={newTodo.title} />
       <select id="status" onChange={handleChange}>
-        <option value="todo" selected={newTodo.status === "todo"}>
+        <option value={STATUS.TODO} selected={newTodo.status === STATUS.TODO}>
           To Do
         </option>
-        <option value="in-progress" selected={newTodo.status === "in-progress"}>
+        <option
+          value={STATUS.INPROGRESS}
+          selected={newTodo.status === STATUS.INPROGRESS}
+        >
           In Progress
         </option>
-        <option value="done" selected={newTodo.status === "done"}>
+        <option value={STATUS.DONE} selected={newTodo.status === STATUS.DONE}>
           Done
         </option>
       </select>
 
       <select id="category" onChange={handleChange}>
         <option
-          value="self-development"
-          selected={newTodo.category === "self-development"}
+          value={CATEGORY.SELF_DEVELOPMENT}
+          selected={newTodo.category === CATEGORY.SELF_DEVELOPMENT}
         >
           자기개발
         </option>
-        <option value="hobby" selected={newTodo.category === "hobby"}>
+        <option
+          value={CATEGORY.HOBBY}
+          selected={newTodo.category === CATEGORY.HOBBY}
+        >
           취미
         </option>
-        <option value="work" selected={newTodo.category === "work"}>
+        <option
+          value={CATEGORY.WORK}
+          selected={newTodo.category === CATEGORY.WORK}
+        >
           업무
         </option>
-        <option value="house-work" selected={newTodo.category === "house-work"}>
+        <option
+          value={CATEGORY.HOUSE_WORK}
+          selected={newTodo.category === CATEGORY.HOUSE_WORK}
+        >
           집안일
         </option>
-        <option value="etc" selected={newTodo.category === "etc"}>
+        <option
+          value={CATEGORY.ETC}
+          selected={newTodo.category === CATEGORY.ETC}
+        >
           기타
         </option>
       </select>
