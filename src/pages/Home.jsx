@@ -8,6 +8,7 @@ import {
 import TodoList from "../components/TodoList";
 import AddForm from "../components/AddForm";
 import UpdateForm from "../components/UpdateForm";
+import CategoryList from "../components/CategoryList";
 import { STATUS } from "../constants";
 
 function Home() {
@@ -56,8 +57,22 @@ function Home() {
     getAllRequest().then((json) => setTodoList(json));
   }, []);
 
+  const countCategory = () => {
+    let categories = {};
+    for (let i = 0; i < todoList.length; i++) {
+      if (categories[todoList[i].category]) {
+        categories[todoList[i].category]++;
+      } else {
+        categories[todoList[i].category] = 1;
+      }
+    }
+
+    return Object.entries(categories);
+  };
+
   return (
     <>
+      <CategoryList categories={countCategory(todoList)} />
       <AddForm onSave={addTodo} />
       {isUpdateVisible && (
         <UpdateForm

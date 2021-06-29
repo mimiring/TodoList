@@ -6,16 +6,19 @@ const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
     return <div>{message}</div>;
   }
   return (
-    <ul>
-      {todoList.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          onDelete={onDelete}
-          onEditClick={onEditClick}
-        />
-      ))}
-    </ul>
+    <>
+      <div>{todoList.length}개</div>
+      <ul>
+        {todoList.map((todo) => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onDelete={onDelete}
+            onEditClick={onEditClick}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 
