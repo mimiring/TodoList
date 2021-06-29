@@ -4,11 +4,11 @@ import {
   deleteTodoRequest,
   getAllRequest,
   updateRequest,
-} from "./services/request";
-import TodoList from "./components/TodoList";
-import AddForm from "./components/AddForm";
-import UpdateForm from "./components/UpdateForm";
-import { STATUS } from "./constants";
+} from "../services/request";
+import TodoList from "../components/TodoList";
+import AddForm from "../components/AddForm";
+import UpdateForm from "../components/UpdateForm";
+import { STATUS } from "../constants";
 
 function Home() {
   const [todoList, setTodoList] = useState([]);
