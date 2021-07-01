@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CategoryList({ categories }) {
   return (
     <ul>
       {categories.map(([key, value]) => (
         <li>
-          {key} : {value}
+          <Link to={`/?categories=${key}`}>
+            {key} : {value}
+          </Link>
         </li>
       ))}
     </ul>
