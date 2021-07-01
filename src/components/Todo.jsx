@@ -1,6 +1,5 @@
 import React from "react";
 import { STATUS } from "../constants";
-import "../style.css";
 
 const Todo = ({ todo, onDelete, onEditClick }) => {
   const handleDeleteClick = () => {

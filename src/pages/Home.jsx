@@ -9,7 +9,6 @@ import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
 import { STATUS } from "../constants";
 import { Link } from "react-router-dom";
-import "../style.css";
 
 function Home({ location }) {
   const [todoList, setTodoList] = useState([]);

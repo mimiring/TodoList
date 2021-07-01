@@ -1,6 +1,5 @@
 import React from "react";
 import Todo from "./Todo";
-import "../style.css";
 
 const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
   if (todoList.length === 0) {
