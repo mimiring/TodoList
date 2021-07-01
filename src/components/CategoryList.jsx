@@ -7,7 +7,8 @@ function CategoryList({ categories }) {
       {categories.map(([key, value]) => (
         <li>
           <Link to={`/?categories=${key}`}>
-            {key} : {value}
+            <span class="category_item_name">{key}</span>
+            <span class="category_item_count">{value}</span>
           </Link>
         </li>
       ))}

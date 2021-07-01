@@ -11,6 +11,7 @@ import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
 import { STATUS } from "../constants";
 import { Link } from "react-router-dom";
+import "../style.css";
 
 function Home({ location }) {
   const [todoList, setTodoList] = useState([]);
@@ -83,11 +84,10 @@ function Home({ location }) {
 
   return (
     <>
-      {!isCategoryView && <CategoryList categories={countCategory(todoList)} />}
       {isCategoryView && (
         <div>
           <Link to="/">ALL</Link>
-          <h2>{categoryName}</h2>
+          <span class="category_item_name">{categoryName}</span>
         </div>
       )}
       <AddForm onSave={addTodo} />
@@ -98,35 +98,55 @@ function Home({ location }) {
           onClose={closeEditForm}
         />
       )}
-      <h2>To Do</h2>
-      <TodoList
-        todoList={todoList.filter(
-          (todo) => todo.status === STATUS.TODO && categoryFilter(todo.category)
+
+      <header class="todos_header">
+        <h1 class="todos_title">ToDos</h1>
+        <div class="search_icon"></div>
+      </header>
+      <p class="description">적당한 텍스트를 넣어보세요</p>
+      <div class="category_wrap">
+        {!isCategoryView && (
+          <CategoryList categories={countCategory(todoList)} />
         )}
-        message="할 일을 모두 마쳤어요"
-        onDelete={deleteTodo}
-        onEditClick={openEditForm}
-      />
-      {console.log()}
-      <h2>In Progress</h2>
-      <TodoList
-        todoList={todoList.filter(
-          (todo) =>
-            todo.status === STATUS.INPROGRESS && categoryFilter(todo.category)
-        )}
-        message="진행중인 일을 모두 마쳤어요"
-        onDelete={deleteTodo}
-        onEditClick={openEditForm}
-      />
-      <h2>Done</h2>
-      <TodoList
-        todoList={todoList.filter(
-          (todo) => todo.status === STATUS.DONE && categoryFilter(todo.category)
-        )}
-        message="완료한 일이 아직 없네요"
-        onDelete={deleteTodo}
-        onEditClick={openEditForm}
-      />
+      </div>
+      <section class="todos_section">
+        <h2 className="todo_section_title">To Do</h2>
+        <TodoList
+          todoList={todoList.filter(
+            (todo) =>
+              todo.status === STATUS.TODO && categoryFilter(todo.category)
+          )}
+          message="할 일을 모두 마쳤어요"
+          onDelete={deleteTodo}
+          onEditClick={openEditForm}
+        />
+      </section>
+
+      <section class="todos_section">
+        <h2 className="todo_section_title">In Progress</h2>
+        <TodoList
+          todoList={todoList.filter(
+            (todo) =>
+              todo.status === STATUS.INPROGRESS && categoryFilter(todo.category)
+          )}
+          message="진행중인 일을 모두 마쳤어요"
+          onDelete={deleteTodo}
+          onEditClick={openEditForm}
+        />
+      </section>
+
+      <section class="todos_section">
+        <h2 className="todo_section_title">Done</h2>
+        <TodoList
+          todoList={todoList.filter(
+            (todo) =>
+              todo.status === STATUS.DONE && categoryFilter(todo.category)
+          )}
+          message="완료한 일이 아직 없네요"
+          onDelete={deleteTodo}
+          onEditClick={openEditForm}
+        />
+      </section>
     </>
   );
 }

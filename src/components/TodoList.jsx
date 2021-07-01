@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "./Todo";
+import "../style.css";
 
 const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
   if (todoList.length === 0) {
@@ -7,8 +8,8 @@ const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
   }
   return (
     <>
-      <div>{todoList.length}개</div>
-      <ul>
+      {/* <span class="category_item_count">{todoList.length}</span> */}
+      <ul class="todo_list">
         {todoList.map((todo) => (
           <Todo
             key={todo.id}
