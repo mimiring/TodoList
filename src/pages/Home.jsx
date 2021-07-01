@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  addRequset,
   deleteTodoRequest,
   getAllRequest,
   updateRequest,
 } from "../services/request";
 import TodoList from "../components/TodoList";
-import AddForm from "../components/AddForm";
 import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
 import { STATUS } from "../constants";
@@ -26,12 +24,6 @@ function Home({ location }) {
       return category === categoryName;
     }
     return true;
-  };
-
-  const addTodo = (todo) => {
-    return addRequset(todo).then((todoData) => {
-      setTodoList([todoData, ...todoList]);
-    });
   };
 
   const updateTodo = (newTodo) => {
@@ -90,7 +82,6 @@ function Home({ location }) {
           <span class="category_item_name">{categoryName}</span>
         </div>
       )}
-      <AddForm onSave={addTodo} />
       {isUpdateVisible && (
         <UpdateForm
           todo={target}
