@@ -147,6 +147,7 @@ function Home({ location }) {
           onEditClick={openEditForm}
         />
       </section>
+      <Link to="/new" className="add_btn" />
     </>
   );
 }

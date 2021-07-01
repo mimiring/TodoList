@@ -153,3 +153,37 @@ ul {
   width: 18px;
   height: 18px;
 }
+
+.add_btn {
+  position: fixed;
+  right: 16px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  background-color: #242faf;
+  border-radius: 50%;
+}
+.add_btn::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  margin: auto;
+  width: 2px;
+  height: 18px;
+  background-color: #ffffff;
+}
+.add_btn::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  margin: auto;
+  width: 18px;
+  height: 2px;
+  background-color: #ffffff;
+}
