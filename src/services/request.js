@@ -33,3 +33,7 @@ export const updateRequest = (todo) => {
     },
   });
 };
+
+export const getDetailRequest = (id) => {
+  return fetch(`${URL}?id=${id}`).then((response) => response.json());
+};
