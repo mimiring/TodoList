@@ -11,6 +11,8 @@ const Search = () => {
 
     if (keyword.trim().length > 0) {
       searchRequest(keyword).then((json) => setTodoList(json));
+    } else {
+      setTodoList([]);
     }
   };
 
