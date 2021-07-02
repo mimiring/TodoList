@@ -37,3 +37,9 @@ export const updateRequest = (todo) => {
 export const getDetailRequest = (id) => {
   return fetch(`${URL}?id=${id}`).then((response) => response.json());
 };
+
+export const searchRequest = (title) => {
+  return fetch(`${URL}?_sort=id&_order=DESC&q=${title}`).then((response) =>
+    response.json()
+  );
+};
