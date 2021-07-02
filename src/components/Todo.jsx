@@ -14,14 +14,14 @@ const Todo = ({ todo, onDelete, onEditClick }) => {
   };
 
   return (
-    <li class="todo_item" key={todo.id}>
+    <li className="todo_item" key={todo.id}>
       <Link to={`/todos/${todo.id}`}>
         <div
-          class={`todo_icon ${
+          className={`todo_icon ${
             todo.status === STATUS.INPROGRESS ? "in_progress" : ""
           } ${todo.status === STATUS.DONE ? "done" : ""}`}
         ></div>
-        <span class="todo_item_text">
+        <span className="todo_item_text">
           {emoji}
           {todo.title}
         </span>

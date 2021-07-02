@@ -7,8 +7,8 @@ const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
   }
   return (
     <>
-      {/* <span class="category_item_count">{todoList.length}</span> */}
-      <ul class="todo_list">
+      {/* <span className="category_item_count">{todoList.length}</span> */}
+      <ul className="todo_list">
         {todoList.map((todo) => (
           <Todo
             key={todo.id}

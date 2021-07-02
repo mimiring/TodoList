@@ -84,7 +84,7 @@ function Home({ location }) {
       {isCategoryView && (
         <div>
           <Link to="/">ALL</Link>
-          <span class="category_item_name">{categoryName}</span>
+          <span className="category_item_name">{categoryName}</span>
         </div>
       )}
       {isUpdateVisible && (
