@@ -21,10 +21,8 @@ const Todo = ({ todo, onDelete, onEditClick }) => {
             todo.status === STATUS.INPROGRESS ? "in_progress" : ""
           } ${todo.status === STATUS.DONE ? "done" : ""}`}
         ></div>
-        <span className="todo_item_text">
-          {emoji}
-          {todo.title}
-        </span>
+        <div className="todo_emoji">{emoji}</div>
+        <span className="todo_item_text">{todo.title}</span>
       </Link>
       <button onClick={handleEditClick}>수정</button>
       <button onClick={handleDeleteClick}>삭제</button>
