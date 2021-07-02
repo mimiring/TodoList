@@ -31,7 +31,7 @@ function CategoryList({ categories }) {
   return (
     <ul className="category_list">
       {categories.map(([name, count]) => (
-        <CategoryItem name={name} count={count} />
+        <CategoryItem key={name} name={name} count={count} />
       ))}
     </ul>
   );

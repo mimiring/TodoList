@@ -20,7 +20,7 @@ const Search = () => {
       {todoList.length > 0 && (
         <ul>
           {todoList.map((todo) => (
-            <li>
+            <li key={todo.id}>
               {todo.category} {todo.title}
             </li>
           ))}
