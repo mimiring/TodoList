@@ -9,11 +9,13 @@ import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
 import { STATUS } from "../constants";
 import { Link } from "react-router-dom";
+import Search from "../components/Search";
 
 function Home({ location }) {
   const [todoList, setTodoList] = useState([]);
   const [target, setTarget] = useState(null);
   const [isUpdateVisible, setUpdateVisible] = useState(false);
+  const [isSearchVisible, setSearchVisible] = useState(false);
 
   const params = new URLSearchParams(location.search);
   const categoryName = params.get("categories");
@@ -23,6 +25,10 @@ function Home({ location }) {
       return category === categoryName;
     }
     return true;
+  };
+
+  const handleSearchClick = () => {
+    setSearchVisible(!isSearchVisible);
   };
 
   const updateTodo = (newTodo) => {
@@ -89,17 +95,18 @@ function Home({ location }) {
         />
       )}
 
-      <header class="todos_header">
-        <h1 class="todos_title">ToDos</h1>
-        <div class="search_icon"></div>
+      <header className="todos_header">
+        <h1 className="todos_title">ToDos</h1>
+        <button className="search_icon" onClick={handleSearchClick}></button>
+        {isSearchVisible && <Search />}
       </header>
-      <p class="description">적당한 텍스트를 넣어보세요</p>
-      <div class="category_wrap">
+      <p className="description">계획적인 삶을 살자!</p>
+      <div className="category_wrap">
         {!isCategoryView && (
           <CategoryList categories={countCategory(todoList)} />
         )}
       </div>
-      <section class="todos_section">
+      <section className="todos_section">
         <h2 className="todo_section_title">To Do</h2>
         <TodoList
           todoList={todoList.filter(
@@ -112,7 +119,7 @@ function Home({ location }) {
         />
       </section>
 
-      <section class="todos_section">
+      <section className="todos_section">
         <h2 className="todo_section_title">In Progress</h2>
         <TodoList
           todoList={todoList.filter(
@@ -125,7 +132,7 @@ function Home({ location }) {
         />
       </section>
 
-      <section class="todos_section">
+      <section className="todos_section">
         <h2 className="todo_section_title">Done</h2>
         <TodoList
           todoList={todoList.filter(
