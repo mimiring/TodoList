@@ -1,8 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { STATUS } from "../constants";
+import { CATEGORY, STATUS } from "../constants";
 
 const Todo = ({ todo, onDelete, onEditClick }) => {
+  let name = todo.category;
+  let emoji = "";
+  if (name === CATEGORY.WORK) {
+    emoji = "🖥";
+  } else if (name === CATEGORY.SELF_DEVELOPMENT) {
+    emoji = "🥰";
+  } else if (name === CATEGORY.HOBBY) {
+    emoji = "❤";
+  } else if (name === CATEGORY.HOUSE_WORK) {
+    emoji = "🏠";
+  } else if (name === CATEGORY.ETC) {
+    emoji = "🗒";
+  }
+
   const handleDeleteClick = () => {
     onDelete(todo.id);
   };
@@ -20,7 +34,8 @@ const Todo = ({ todo, onDelete, onEditClick }) => {
           } ${todo.status === STATUS.DONE ? "done" : ""}`}
         ></div>
         <span class="todo_item_text">
-          {todo.category} | {todo.title}
+          {emoji}
+          {todo.title}
         </span>
       </Link>
       <button onClick={handleEditClick}>수정</button>
