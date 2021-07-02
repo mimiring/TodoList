@@ -19,3 +19,20 @@ export const HTTP = {
   PUT: "PUT",
   DELETE: "DELETE",
 };
+
+export const getCategoryEmoji = (categoryName) => {
+  let emoji = "";
+  if (categoryName === CATEGORY.WORK) {
+    emoji = "🖥";
+  } else if (categoryName === CATEGORY.SELF_DEVELOPMENT) {
+    emoji = "🥰";
+  } else if (categoryName === CATEGORY.HOBBY) {
+    emoji = "❤";
+  } else if (categoryName === CATEGORY.HOUSE_WORK) {
+    emoji = "🏠";
+  } else if (categoryName === CATEGORY.ETC) {
+    emoji = "🗒";
+  }
+
+  return emoji;
+};

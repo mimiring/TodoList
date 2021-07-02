@@ -1,20 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CATEGORY } from "../constants";
+import { getCategoryEmoji } from "../constants";
 
 function CategoryItem({ name, count }) {
-  let emoji = "";
-  if (name === CATEGORY.WORK) {
-    emoji = "🖥";
-  } else if (name === CATEGORY.SELF_DEVELOPMENT) {
-    emoji = "🥰";
-  } else if (name === CATEGORY.HOBBY) {
-    emoji = "❤";
-  } else if (name === CATEGORY.HOUSE_WORK) {
-    emoji = "🏠";
-  } else if (name === CATEGORY.ETC) {
-    emoji = "🗒";
-  }
+  const emoji = getCategoryEmoji(name);
 
   return (
     <li className="category_item">

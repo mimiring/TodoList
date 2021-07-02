@@ -1,21 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CATEGORY, STATUS } from "../constants";
+import { getCategoryEmoji, STATUS } from "../constants";
 
 const Todo = ({ todo, onDelete, onEditClick }) => {
-  let name = todo.category;
-  let emoji = "";
-  if (name === CATEGORY.WORK) {
-    emoji = "🖥";
-  } else if (name === CATEGORY.SELF_DEVELOPMENT) {
-    emoji = "🥰";
-  } else if (name === CATEGORY.HOBBY) {
-    emoji = "❤";
-  } else if (name === CATEGORY.HOUSE_WORK) {
-    emoji = "🏠";
-  } else if (name === CATEGORY.ETC) {
-    emoji = "🗒";
-  }
+  const emoji = getCategoryEmoji(todo.category);
 
   const handleDeleteClick = () => {
     onDelete(todo.id);
