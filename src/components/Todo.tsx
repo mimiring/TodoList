@@ -2,7 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getCategoryEmoji, STATUS } from "../constants";
 
-const Todo = ({ todo, onDelete, onEditClick }) => {
+export type ToDo = {
+  title: string;
+  status: string;
+  category: string;
+  note: string;
+  id: number;
+};
+
+type TodoProps = {
+  todo: ToDo;
+  onDelete: (todoId: number) => void;
+  onEditClick: (todo: ToDo) => void;
+};
+
+const Todo = ({ todo, onDelete, onEditClick }: TodoProps) => {
   const emoji = getCategoryEmoji(todo.category);
 
   const handleDeleteClick = () => {
