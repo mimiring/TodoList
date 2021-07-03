@@ -1,7 +1,19 @@
 import React from "react";
-import Todo from "./Todo";
+import Todo, { ToDo } from "./Todo";
 
-const TodoList = ({ todoList, message, onDelete, onEditClick }) => {
+type TodoListProps = {
+  todoList: ToDo[];
+  message: string;
+  onDelete: (todoId: number) => void;
+  onEditClick: (todo: ToDo) => void;
+};
+
+const TodoList = ({
+  todoList,
+  message,
+  onDelete,
+  onEditClick,
+}: TodoListProps) => {
   if (todoList.length === 0) {
     return <div>{message}</div>;
   }
