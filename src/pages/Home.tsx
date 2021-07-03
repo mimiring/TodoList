@@ -7,20 +7,23 @@ import {
 import TodoList from "../components/TodoList";
 import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
-import { STATUS } from "../constants";
-import { Link } from "react-router-dom";
+import { Category, STATUS } from "../constants";
+import { Link, RouteComponentProps } from "react-router-dom";
 import Search from "../components/Search";
+import { ToDo } from "../components/Todo";
 
-function Home({ location }) {
-  const [todoList, setTodoList] = useState([]);
-  const [target, setTarget] = useState(null);
+type HomeProps = RouteComponentProps;
+
+function Home({ location }: HomeProps) {
+  const [todoList, setTodoList] = useState<ToDo[]>([]);
+  const [target, setTarget] = useState<ToDo | null>(null);
   const [isUpdateVisible, setUpdateVisible] = useState(false);
   const [isSearchVisible, setSearchVisible] = useState(false);
 
   const params = new URLSearchParams(location.search);
   const categoryName = params.get("categories");
   const isCategoryView = categoryName !== null;
-  const categoryFilter = (category) => {
+  const categoryFilter = (category: Category) => {
     if (isCategoryView) {
       return category === categoryName;
     }
@@ -31,7 +34,7 @@ function Home({ location }) {
     setSearchVisible(!isSearchVisible);
   };
 
-  const updateTodo = (newTodo) => {
+  const updateTodo = (newTodo: ToDo) => {
     updateRequest(newTodo).then(() => {
       const newTodoList = todoList.map((todo) => {
         if (todo.id === newTodo.id) {
@@ -44,7 +47,7 @@ function Home({ location }) {
     });
   };
 
-  const deleteTodo = (todoId) => {
+  const deleteTodo = (todoId: number) => {
     deleteTodoRequest(todoId).then(() => {
       const newTodoList = todoList.filter((todo) => {
         return todo.id !== todoId;
@@ -53,7 +56,7 @@ function Home({ location }) {
     });
   };
 
-  const openEditForm = (todo) => {
+  const openEditForm = (todo: ToDo) => {
     setTarget(todo);
     setUpdateVisible(true);
   };
@@ -67,7 +70,7 @@ function Home({ location }) {
   }, []);
 
   const countCategory = () => {
-    let categories = {};
+    let categories: { [key: string]: number } = {};
     for (let i = 0; i < todoList.length; i++) {
       if (categories[todoList[i].category]) {
         categories[todoList[i].category]++;
@@ -102,9 +105,7 @@ function Home({ location }) {
       </header>
       <p className="description">계획적인 삶을 살자!</p>
       <div className="category_wrap">
-        {!isCategoryView && (
-          <CategoryList categories={countCategory(todoList)} />
-        )}
+        {!isCategoryView && <CategoryList categories={countCategory()} />}
       </div>
       <section className="todos_section">
         <h2 className="todo_section_title">To Do</h2>
