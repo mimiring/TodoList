@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { CATEGORY, STATUS } from "../constants";
+import { Category, STATUS } from "../constants";
 
 const baseTodo = {
   title: "",
   status: STATUS.TODO,
-  category: CATEGORY.EMPTY,
+  category: Category.EMPTY,
   note: "",
 };
 
@@ -20,7 +20,7 @@ const AddForm = ({ onSave }) => {
       alert("제목을 입력해주세요.");
       return;
     }
-    if (todo.category === CATEGORY.EMPTY) {
+    if (todo.category === Category.EMPTY) {
       alert("카테고리는 반드시 선택해야 합니다.");
       return;
     }
@@ -55,37 +55,37 @@ const AddForm = ({ onSave }) => {
 
       <select id="category" onChange={handleChange}>
         <option
-          value={CATEGORY.EMPTY}
-          selected={todo.category === CATEGORY.EMPTY}
+          value={Category.EMPTY}
+          selected={todo.category === Category.EMPTY}
           disabled
         >
           선택하세요
         </option>
         <option
-          value={CATEGORY.SELF_DEVELOPMENT}
-          selected={todo.category === CATEGORY.SELF_DEVELOPMENT}
+          value={Category.SELF_DEVELOPMENT}
+          selected={todo.category === Category.SELF_DEVELOPMENT}
         >
           자기개발
         </option>
         <option
-          value={CATEGORY.HOBBY}
-          selected={todo.category === CATEGORY.HOBBY}
+          value={Category.HOBBY}
+          selected={todo.category === Category.HOBBY}
         >
           취미
         </option>
         <option
-          value={CATEGORY.WORK}
-          selected={todo.category === CATEGORY.WORK}
+          value={Category.WORK}
+          selected={todo.category === Category.WORK}
         >
           업무
         </option>
         <option
-          value={CATEGORY.HOUSE_WORK}
-          selected={todo.category === CATEGORY.HOUSE_WORK}
+          value={Category.HOUSE_WORK}
+          selected={todo.category === Category.HOUSE_WORK}
         >
           집안일
         </option>
-        <option value={CATEGORY.ETC} selected={todo.category === CATEGORY.ETC}>
+        <option value={Category.ETC} selected={todo.category === Category.ETC}>
           기타
         </option>
       </select>

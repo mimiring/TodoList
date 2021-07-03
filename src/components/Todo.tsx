@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getCategoryEmoji, STATUS } from "../constants";
+import { Category, getCategoryEmoji, STATUS } from "../constants";
 
 export type ToDo = {
   title: string;
   status: string;
-  category: string;
+  category: Category;
   note: string;
   id: number;
 };

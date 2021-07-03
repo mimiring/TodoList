@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CATEGORY, STATUS } from "../constants";
+import { Category, STATUS } from "../constants";
 
 function UpdateForm({ todo, onUpdate, onClose }) {
   const [newTodo, setNewTodo] = useState(todo);
@@ -39,32 +39,32 @@ function UpdateForm({ todo, onUpdate, onClose }) {
 
       <select id="category" onChange={handleChange}>
         <option
-          value={CATEGORY.SELF_DEVELOPMENT}
-          selected={newTodo.category === CATEGORY.SELF_DEVELOPMENT}
+          value={Category.SELF_DEVELOPMENT}
+          selected={newTodo.category === Category.SELF_DEVELOPMENT}
         >
           자기개발
         </option>
         <option
-          value={CATEGORY.HOBBY}
-          selected={newTodo.category === CATEGORY.HOBBY}
+          value={Category.HOBBY}
+          selected={newTodo.category === Category.HOBBY}
         >
           취미
         </option>
         <option
-          value={CATEGORY.WORK}
-          selected={newTodo.category === CATEGORY.WORK}
+          value={Category.WORK}
+          selected={newTodo.category === Category.WORK}
         >
           업무
         </option>
         <option
-          value={CATEGORY.HOUSE_WORK}
-          selected={newTodo.category === CATEGORY.HOUSE_WORK}
+          value={Category.HOUSE_WORK}
+          selected={newTodo.category === Category.HOUSE_WORK}
         >
           집안일
         </option>
         <option
-          value={CATEGORY.ETC}
-          selected={newTodo.category === CATEGORY.ETC}
+          value={Category.ETC}
+          selected={newTodo.category === Category.ETC}
         >
           기타
         </option>
