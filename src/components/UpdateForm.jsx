@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Category, STATUS } from "../constants";
 
 function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
   const [newTodo, setNewTodo] = useState(todo);
-
+  const history = useHistory();
   const handleChange = (e) => {
     setNewTodo({ ...newTodo, [e.target.id]: e.target.value });
   };
@@ -14,8 +15,9 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
       return;
     }
 
-    onUpdate(newTodo);
-    onClose();
+    onUpdate(newTodo).then(() => {
+      history.push("/");
+    });
   };
 
   const handleDeleteClick = () => {

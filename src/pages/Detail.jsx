@@ -10,21 +10,11 @@ import {
 const Detail = ({ match, history }) => {
   const [todo, setTodo] = useState();
   const [isLoading, setLoading] = useState(true);
-  const [isUpdateVisible, setUpdateVisible] = useState(false);
 
   const updateTodo = (newTodo) => {
     updateRequest(newTodo).then(() => {
       setTodo(newTodo);
-      setUpdateVisible(false);
     });
-  };
-
-  const closeEditForm = () => {
-    setUpdateVisible(false);
-  };
-
-  const handleEditClick = () => {
-    setUpdateVisible(true);
   };
 
   const handleDeleteClick = () => {
@@ -47,24 +37,11 @@ const Detail = ({ match, history }) => {
   return (
     <div>
       <Link to="/">back</Link>
-      {isUpdateVisible ? (
-        <UpdateForm
-          todo={todo}
-          onUpdate={updateTodo}
-          onClose={closeEditForm}
-          handleDeleteClick={handleDeleteClick}
-        />
-      ) : (
-        <div>
-          <button onClick={handleEditClick}>수정</button>
-          <button onClick={handleDeleteClick}>삭제</button>
-          <h2>{todo.title}</h2>
-          <div>
-            {todo.status} {todo.category}
-          </div>
-          <p>{todo.note}</p>
-        </div>
-      )}
+      <UpdateForm
+        todo={todo}
+        onUpdate={updateTodo}
+        handleDeleteClick={handleDeleteClick}
+      />
     </div>
   );
 };

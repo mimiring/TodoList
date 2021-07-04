@@ -61,10 +61,6 @@ function Home({ location }: HomeProps) {
     setUpdateVisible(true);
   };
 
-  const closeEditForm = () => {
-    setUpdateVisible(false);
-  };
-
   useEffect(() => {
     getAllRequest().then((json) => setTodoList(json));
   }, []);
@@ -94,7 +90,7 @@ function Home({ location }: HomeProps) {
         <UpdateForm
           todo={target}
           onUpdate={updateTodo}
-          onClose={closeEditForm}
+          onClose={() => {}}
           onDelete={() => {}}
         />
       )}
