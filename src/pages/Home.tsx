@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  deleteTodoRequest,
-  getAllRequest,
-  updateRequest,
-} from "../services/request";
+import { deleteTodoRequest, getAllRequest } from "../services/request";
 import TodoList from "../components/TodoList";
-import UpdateForm from "../components/UpdateForm";
 import CategoryList from "../components/CategoryList";
 import { Category, STATUS } from "../constants";
 import { Link, RouteComponentProps } from "react-router-dom";
@@ -16,8 +11,6 @@ type HomeProps = RouteComponentProps;
 
 function Home({ location }: HomeProps) {
   const [todoList, setTodoList] = useState<ToDo[]>([]);
-  const [target, setTarget] = useState<ToDo | null>(null);
-  const [isUpdateVisible, setUpdateVisible] = useState(false);
   const [isSearchVisible, setSearchVisible] = useState(false);
 
   const params = new URLSearchParams(location.search);
@@ -34,19 +27,6 @@ function Home({ location }: HomeProps) {
     setSearchVisible(!isSearchVisible);
   };
 
-  const updateTodo = (newTodo: ToDo) => {
-    updateRequest(newTodo).then(() => {
-      const newTodoList = todoList.map((todo) => {
-        if (todo.id === newTodo.id) {
-          return newTodo;
-        }
-        return todo;
-      });
-      setTodoList(newTodoList);
-      setTarget(null);
-    });
-  };
-
   const deleteTodo = (todoId: number) => {
     deleteTodoRequest(todoId).then(() => {
       const newTodoList = todoList.filter((todo) => {
@@ -54,11 +34,6 @@ function Home({ location }: HomeProps) {
       });
       setTodoList(newTodoList);
     });
-  };
-
-  const openEditForm = (todo: ToDo) => {
-    setTarget(todo);
-    setUpdateVisible(true);
   };
 
   useEffect(() => {
@@ -86,15 +61,6 @@ function Home({ location }: HomeProps) {
           <span className="category_item_name">{categoryName}</span>
         </div>
       )}
-      {isUpdateVisible && (
-        <UpdateForm
-          todo={target}
-          onUpdate={updateTodo}
-          onClose={() => {}}
-          onDelete={() => {}}
-        />
-      )}
-
       <header className="todos_header">
         <h1 className="todos_title">ToDos</h1>
         <button className="search_icon" onClick={handleSearchClick}></button>
@@ -113,7 +79,6 @@ function Home({ location }: HomeProps) {
           )}
           message="할 일을 모두 마쳤어요"
           onDelete={deleteTodo}
-          onEditClick={openEditForm}
         />
       </section>
 
@@ -126,7 +91,6 @@ function Home({ location }: HomeProps) {
           )}
           message="진행중인 일을 모두 마쳤어요"
           onDelete={deleteTodo}
-          onEditClick={openEditForm}
         />
       </section>
 
@@ -139,7 +103,6 @@ function Home({ location }: HomeProps) {
           )}
           message="완료한 일이 아직 없네요"
           onDelete={deleteTodo}
-          onEditClick={openEditForm}
         />
       </section>
       <Link to="/new" className="add_btn" />
