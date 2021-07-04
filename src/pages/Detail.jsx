@@ -36,7 +36,11 @@ const Detail = ({ match, history }) => {
 
   return (
     <div>
-      <Link to="/">back</Link>
+      <div className="todo_title_wrap">
+        <Link className="todo_backbtn" to="/"></Link>
+        <h3 class="todo_title">Edit To Do</h3>
+      </div>
+
       <UpdateForm
         todo={todo}
         onUpdate={updateTodo}

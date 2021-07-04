@@ -25,8 +25,7 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
   };
 
   return (
-    <div>
-      <h3>수정할 제목</h3>
+    <div className="todo_wrap">
       <label htmlFor="title" className="todo_input_title">
         Title
       </label>
