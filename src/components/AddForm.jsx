@@ -31,14 +31,21 @@ const AddForm = ({ onSave }) => {
   };
 
   return (
-    <div>
+    <div className="todo_wrap">
+      <label htmlFor="title" className="todo_input_title">
+        Title
+      </label>
       <input
         onChange={handleChange}
         id="title"
+        className="todo_input"
         value={todo.title}
         placeholder="제목을 입력하세요"
       />
-      <select id="status" onChange={handleChange}>
+      <label htmlFor="status" className="todo_input_title">
+        Status
+      </label>
+      <select id="status" className="todo_select" onChange={handleChange}>
         <option value={STATUS.TODO} selected={todo.status === STATUS.TODO}>
           To Do
         </option>
@@ -53,7 +60,10 @@ const AddForm = ({ onSave }) => {
         </option>
       </select>
 
-      <select id="category" onChange={handleChange}>
+      <label htmlFor="category" className="todo_input_title">
+        Category
+      </label>
+      <select id="category" className="todo_select" onChange={handleChange}>
         <option
           value={Category.EMPTY}
           selected={todo.category === Category.EMPTY}
@@ -90,9 +100,19 @@ const AddForm = ({ onSave }) => {
         </option>
       </select>
 
-      <label htmlFor="note">노트</label>
-      <textarea id="note" value={todo.note} onChange={handleChange} />
-      <button onClick={handleSaveClick}>저장</button>
+      <label htmlFor="note" className="todo_input_title">
+        Note
+      </label>
+      <textarea
+        id="note"
+        className="todo_textarea"
+        value={todo.note}
+        onChange={handleChange}
+        placeholder="Put your notes here"
+      />
+      <button className="todo_savebtn" onClick={handleSaveClick}>
+        Create To Do
+      </button>
     </div>
   );
 };

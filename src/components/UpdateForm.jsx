@@ -25,7 +25,7 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
   return (
     <div>
       <h3>수정할 제목</h3>
-      <label htmlFor="title" className="todo_list_title">
+      <label htmlFor="title" className="todo_input_title">
         Title
       </label>
       <input
@@ -35,7 +35,7 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
         value={newTodo.title}
       />
 
-      <label htmlFor="status" className="todo_list_title">
+      <label htmlFor="status" className="todo_input_title">
         Status
       </label>
       <select id="status" className="todo_select" onChange={handleChange}>
@@ -53,7 +53,7 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
         </option>
       </select>
 
-      <label htmlFor="category" className="todo_list_title">
+      <label htmlFor="category" className="todo_input_title">
         Category
       </label>
       <select id="category" className="todo_select" onChange={handleChange}>
@@ -89,7 +89,7 @@ function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
         </option>
       </select>
 
-      <label htmlFor="note" className="todo_list_title">
+      <label htmlFor="note" className="todo_input_title">
         Note
       </label>
       <textarea
