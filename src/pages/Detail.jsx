@@ -12,7 +12,7 @@ const Detail = ({ match, history }) => {
   const [isLoading, setLoading] = useState(true);
 
   const updateTodo = (newTodo) => {
-    updateRequest(newTodo).then(() => {
+    return updateRequest(newTodo).then(() => {
       setTodo(newTodo);
     });
   };
@@ -44,7 +44,7 @@ const Detail = ({ match, history }) => {
       <UpdateForm
         todo={todo}
         onUpdate={updateTodo}
-        handleDeleteClick={handleDeleteClick}
+        onDelete={handleDeleteClick}
       />
     </div>
   );

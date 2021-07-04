@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Category, STATUS } from "../constants";
 
-function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
+function UpdateForm({ todo, onUpdate, onDelete }) {
   const [newTodo, setNewTodo] = useState(todo);
   const history = useHistory();
   const handleChange = (e) => {
