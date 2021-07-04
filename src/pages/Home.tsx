@@ -95,6 +95,7 @@ function Home({ location }: HomeProps) {
           todo={target}
           onUpdate={updateTodo}
           onClose={closeEditForm}
+          onDelete={() => {}}
         />
       )}
 

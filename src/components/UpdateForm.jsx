@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Category, STATUS } from "../constants";
 
-function UpdateForm({ todo, onUpdate, onClose }) {
+function UpdateForm({ todo, onUpdate, onClose, onDelete }) {
   const [newTodo, setNewTodo] = useState(todo);
 
   const handleChange = (e) => {
@@ -18,11 +18,27 @@ function UpdateForm({ todo, onUpdate, onClose }) {
     onClose();
   };
 
+  const handleDeleteClick = () => {
+    onDelete();
+  };
+
   return (
     <div>
       <h3>수정할 제목</h3>
-      <input id="title" onChange={handleChange} value={newTodo.title} />
-      <select id="status" onChange={handleChange}>
+      <label htmlFor="title" className="todo_list_title">
+        Title
+      </label>
+      <input
+        id="title"
+        className="todo_input"
+        onChange={handleChange}
+        value={newTodo.title}
+      />
+
+      <label htmlFor="status" className="todo_list_title">
+        Status
+      </label>
+      <select id="status" className="todo_select" onChange={handleChange}>
         <option value={STATUS.TODO} selected={newTodo.status === STATUS.TODO}>
           To Do
         </option>
@@ -37,7 +53,10 @@ function UpdateForm({ todo, onUpdate, onClose }) {
         </option>
       </select>
 
-      <select id="category" onChange={handleChange}>
+      <label htmlFor="category" className="todo_list_title">
+        Category
+      </label>
+      <select id="category" className="todo_select" onChange={handleChange}>
         <option
           value={Category.SELF_DEVELOPMENT}
           selected={newTodo.category === Category.SELF_DEVELOPMENT}
@@ -70,11 +89,22 @@ function UpdateForm({ todo, onUpdate, onClose }) {
         </option>
       </select>
 
-      <label htmlFor="note">노트</label>
-      <textarea id="note" value={newTodo.note} onChange={handleChange} />
+      <label htmlFor="note" className="todo_list_title">
+        Note
+      </label>
+      <textarea
+        id="note"
+        className="todo_textarea"
+        value={newTodo.note}
+        onChange={handleChange}
+      />
 
-      <button onClick={handleSaveClick}>저장</button>
-      <button onClick={onClose}>닫기</button>
+      <button className="todo_savebtn" onClick={handleSaveClick}>
+        Save Changes
+      </button>
+      <button className="todo_delbtn" onClick={handleDeleteClick}>
+        Delete To Do
+      </button>
     </div>
   );
 }

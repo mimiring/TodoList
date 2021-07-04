@@ -48,7 +48,12 @@ const Detail = ({ match, history }) => {
     <div>
       <Link to="/">back</Link>
       {isUpdateVisible ? (
-        <UpdateForm todo={todo} onUpdate={updateTodo} onClose={closeEditForm} />
+        <UpdateForm
+          todo={todo}
+          onUpdate={updateTodo}
+          onClose={closeEditForm}
+          handleDeleteClick={handleDeleteClick}
+        />
       ) : (
         <div>
           <button onClick={handleEditClick}>수정</button>
