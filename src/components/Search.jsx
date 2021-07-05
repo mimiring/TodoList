@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchRequest } from "../services/request";
+import SearchBlankResult from "./SearchBlankResult";
 
 const Search = () => {
   const [keyword, setKeyword] = useState();
@@ -61,7 +62,7 @@ const Search = () => {
             </svg>
           </button>
         </div>
-        {todoList.length > 0 && (
+        {todoList.length > 0 ? (
           <ul>
             {todoList.map((todo) => (
               <li key={todo.id}>
@@ -69,6 +70,11 @@ const Search = () => {
               </li>
             ))}
           </ul>
+        ) : (
+          <div className="seach_blank_wrap">
+            <SearchBlankResult />
+            <div className="search_blank_text">Start your To Do search</div>
+          </div>
         )}
       </div>
     </div>
