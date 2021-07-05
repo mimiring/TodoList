@@ -72,8 +72,8 @@ function Home({ location, history }: HomeProps) {
       <header className="todos_header">
         <h1 className="todos_title">ToDos</h1>
         <button className="search_icon" onClick={handleSearchClick}></button>
-        {isSearchVisible && <Search />}
       </header>
+
       <p className="description">계획적인 삶을 살자!</p>
       <div className="category_wrap">
         {!isCategoryView && <CategoryList categories={countCategory()} />}
@@ -114,6 +114,7 @@ function Home({ location, history }: HomeProps) {
         />
       </section>
       <Link to="/new" className="add_btn" />
+      {isSearchVisible && <Search />}
     </>
   );
 }
