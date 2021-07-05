@@ -8,9 +8,13 @@ const New = ({ history }) => {
   };
 
   const addTodo = (todo) => {
-    return addRequset(todo).then(() => {
-      history.push("/");
-    });
+    return addRequset(todo)
+      .then(() => {
+        history.push("/");
+      })
+      .catch(() => {
+        history.push("/err");
+      });
   };
 
   return (

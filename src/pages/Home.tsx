@@ -9,7 +9,7 @@ import { ToDo } from "../components/Todo";
 
 type HomeProps = RouteComponentProps;
 
-function Home({ location }: HomeProps) {
+function Home({ location, history }: HomeProps) {
   const [todoList, setTodoList] = useState<ToDo[]>([]);
   const [isSearchVisible, setSearchVisible] = useState(false);
 
@@ -28,16 +28,24 @@ function Home({ location }: HomeProps) {
   };
 
   const deleteTodo = (todoId: number) => {
-    deleteTodoRequest(todoId).then(() => {
-      const newTodoList = todoList.filter((todo) => {
-        return todo.id !== todoId;
+    deleteTodoRequest(todoId)
+      .then(() => {
+        const newTodoList = todoList.filter((todo) => {
+          return todo.id !== todoId;
+        });
+        setTodoList(newTodoList);
+      })
+      .catch(() => {
+        history.push("/err");
       });
-      setTodoList(newTodoList);
-    });
   };
 
   useEffect(() => {
-    getAllRequest().then((json) => setTodoList(json));
+    getAllRequest()
+      .then((json) => setTodoList(json))
+      .catch(() => {
+        history.push("/err");
+      });
   }, []);
 
   const countCategory = () => {

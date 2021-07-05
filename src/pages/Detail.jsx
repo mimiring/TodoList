@@ -12,22 +12,34 @@ const Detail = ({ match, history }) => {
   const [isLoading, setLoading] = useState(true);
 
   const updateTodo = (newTodo) => {
-    return updateRequest(newTodo).then(() => {
-      setTodo(newTodo);
-    });
+    return updateRequest(newTodo)
+      .then(() => {
+        setTodo(newTodo);
+      })
+      .catch(() => {
+        history.push("/err");
+      });
   };
 
   const handleDeleteClick = () => {
-    deleteTodoRequest(todo.id).then(() => {
-      history.push("/");
-    });
+    deleteTodoRequest(todo.id)
+      .then(() => {
+        history.push("/");
+      })
+      .catch(() => {
+        history.push("/err");
+      });
   };
 
   useEffect(() => {
-    getDetailRequest(match.params.id).then((todo) => {
-      setTodo(todo[0]);
-      setLoading(false);
-    });
+    getDetailRequest(match.params.id)
+      .then((todo) => {
+        setTodo(todo[0]);
+        setLoading(false);
+      })
+      .catch(() => {
+        history.push("/err");
+      });
   }, []);
 
   if (isLoading) {
