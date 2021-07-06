@@ -36,3 +36,7 @@ export const getCategoryEmoji = (categoryName: Category) => {
 
   return emoji;
 };
+
+export enum DragTargetType {
+  TODO_ITEM = "todo-item",
+}

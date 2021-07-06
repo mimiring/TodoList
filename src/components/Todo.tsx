@@ -1,6 +1,12 @@
 import React from "react";
+import { useDrag } from "react-dnd";
 import { Link } from "react-router-dom";
-import { Category, getCategoryEmoji, STATUS } from "../constants";
+import {
+  Category,
+  DragTargetType,
+  getCategoryEmoji,
+  STATUS,
+} from "../constants";
 
 export type ToDo = {
   title: string;
@@ -12,13 +18,35 @@ export type ToDo = {
 
 type TodoProps = {
   todo: ToDo;
+  onDrop: (todo: ToDo) => Promise<void>;
 };
 
-const Todo = ({ todo }: TodoProps) => {
+const Todo = ({ todo, onDrop }: TodoProps) => {
   const emoji = getCategoryEmoji(todo.category);
+  const [{ opacity }, drag] = useDrag(
+    () => ({
+      type: DragTargetType.TODO_ITEM,
+      item: {
+        ...todo,
+      },
+      end(item, monitor) {
+        const dropResult = monitor.getDropResult<ToDo>();
+        if (dropResult && dropResult.status !== todo.status) {
+          onDrop({ ...todo, status: dropResult.status });
+        }
+      },
+      options: {
+        dropEffect: "copy",
+      },
+      collect: (monitor) => ({
+        opacity: monitor.isDragging() ? 0.4 : 1,
+      }),
+    }),
+    [todo]
+  );
 
   return (
-    <li className="todo_item" key={todo.id}>
+    <li className="todo_item" key={todo.id} ref={drag} style={{ opacity }}>
       <Link to={`/todos/${todo.id}`}>
         <div
           className={`todo_icon ${
