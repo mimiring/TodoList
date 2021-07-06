@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteTodoRequest, getAllRequest } from "../services/request";
+import { getAllRequest } from "../services/request";
 import TodoList from "../components/TodoList";
 import CategoryList from "../components/CategoryList";
 import { Category, STATUS } from "../constants";
@@ -25,19 +25,6 @@ function Home({ location, history }: HomeProps) {
 
   const handleSearchClick = () => {
     setSearchVisible(!isSearchVisible);
-  };
-
-  const deleteTodo = (todoId: number) => {
-    deleteTodoRequest(todoId)
-      .then(() => {
-        const newTodoList = todoList.filter((todo) => {
-          return todo.id !== todoId;
-        });
-        setTodoList(newTodoList);
-      })
-      .catch(() => {
-        history.push("/err");
-      });
   };
 
   useEffect(() => {
@@ -86,7 +73,6 @@ function Home({ location, history }: HomeProps) {
               todo.status === STATUS.TODO && categoryFilter(todo.category)
           )}
           message="할 일을 모두 마쳤어요"
-          onDelete={deleteTodo}
         />
       </section>
 
@@ -98,7 +84,6 @@ function Home({ location, history }: HomeProps) {
               todo.status === STATUS.INPROGRESS && categoryFilter(todo.category)
           )}
           message="진행중인 일을 모두 마쳤어요"
-          onDelete={deleteTodo}
         />
       </section>
 
@@ -110,7 +95,6 @@ function Home({ location, history }: HomeProps) {
               todo.status === STATUS.DONE && categoryFilter(todo.category)
           )}
           message="완료한 일이 아직 없네요"
-          onDelete={deleteTodo}
         />
       </section>
       <Link to="/new" className="add_btn" />

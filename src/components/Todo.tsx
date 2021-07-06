@@ -12,15 +12,10 @@ export type ToDo = {
 
 type TodoProps = {
   todo: ToDo;
-  onDelete: (todoId: number) => void;
 };
 
-const Todo = ({ todo, onDelete }: TodoProps) => {
+const Todo = ({ todo }: TodoProps) => {
   const emoji = getCategoryEmoji(todo.category);
-
-  const handleDeleteClick = () => {
-    onDelete(todo.id);
-  };
 
   return (
     <li className="todo_item" key={todo.id}>
@@ -33,7 +28,6 @@ const Todo = ({ todo, onDelete }: TodoProps) => {
         <div className="todo_emoji">{emoji}</div>
         <span className="todo_item_text">{todo.title}</span>
       </Link>
-      <button onClick={handleDeleteClick}>삭제</button>
     </li>
   );
 };
