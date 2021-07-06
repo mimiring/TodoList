@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Category, STATUS } from "../constants";
+import { ToDo } from "./Todo";
 
-function UpdateForm({ todo, onUpdate, onDelete }) {
+type UpdateFormProps = {
+  todo: ToDo;
+  onUpdate: (newTodo: ToDo) => Promise<void>;
+  onDelete: () => void;
+};
+
+function UpdateForm({ todo, onUpdate, onDelete }: UpdateFormProps) {
   const [newTodo, setNewTodo] = useState(todo);
   const history = useHistory();
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setNewTodo({ ...newTodo, [e.target.id]: e.target.value });
   };
 
