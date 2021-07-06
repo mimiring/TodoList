@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
+import { ToDo } from "../components/Todo";
 import UpdateForm from "../components/UpdateForm";
 import {
   deleteTodoRequest,
@@ -7,11 +8,16 @@ import {
   updateRequest,
 } from "../services/request";
 
-const Detail = ({ match, history }) => {
-  const [todo, setTodo] = useState();
+type MatchParams = {
+  id: string;
+};
+type DetailProps = RouteComponentProps<MatchParams>;
+
+const Detail = ({ match, history }: DetailProps) => {
+  const [todo, setTodo] = useState<ToDo>();
   const [isLoading, setLoading] = useState(true);
 
-  const updateTodo = (newTodo) => {
+  const updateTodo = (newTodo: ToDo) => {
     return updateRequest(newTodo)
       .then(() => {
         setTodo(newTodo);
@@ -22,13 +28,15 @@ const Detail = ({ match, history }) => {
   };
 
   const handleDeleteClick = () => {
-    deleteTodoRequest(todo.id)
-      .then(() => {
-        history.push("/");
-      })
-      .catch(() => {
-        history.push("/err");
-      });
+    if (todo) {
+      deleteTodoRequest(todo.id)
+        .then(() => {
+          history.push("/");
+        })
+        .catch(() => {
+          history.push("/err");
+        });
+    }
   };
 
   useEffect(() => {
@@ -50,14 +58,16 @@ const Detail = ({ match, history }) => {
     <div>
       <div className="todo_title_wrap">
         <Link className="todo_backbtn" to="/"></Link>
-        <h3 class="todo_title">Edit To Do</h3>
+        <h3 className="todo_title">Edit To Do</h3>
       </div>
 
-      <UpdateForm
-        todo={todo}
-        onUpdate={updateTodo}
-        onDelete={handleDeleteClick}
-      />
+      {todo && (
+        <UpdateForm
+          todo={todo}
+          onUpdate={updateTodo}
+          onDelete={handleDeleteClick}
+        />
+      )}
     </div>
   );
 };
