@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Category, STATUS } from "../constants";
+import { ToDo } from "./Todo";
+
+type AddFormProps = {
+  onSave: (todo: ToDo) => Promise<void>;
+};
 
 const baseTodo = {
+  id: Date.now(),
   title: "",
   status: STATUS.TODO,
   category: Category.EMPTY,
   note: "",
 };
 
-const AddForm = ({ onSave }) => {
+const AddForm = ({ onSave }: AddFormProps) => {
   const [todo, setTodo] = useState(baseTodo);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setTodo({ ...todo, [e.target.id]: e.target.value });
   };
 
