@@ -3,7 +3,7 @@ import { DndProvider } from "react-dnd";
 import { getAllRequest, updateRequest } from "../services/request";
 import TodoList from "../components/TodoList";
 import CategoryList from "../components/CategoryList";
-import { Category, STATUS } from "../constants";
+import { Category, Status } from "../constants";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Search from "../components/Search";
 import { ToDo } from "../components/Todo";
@@ -86,10 +86,10 @@ function Home({ location, history }: HomeProps) {
           <TodoList
             todoList={todoList.filter(
               (todo) =>
-                todo.status === STATUS.TODO && categoryFilter(todo.category)
+                todo.status === Status.TODO && categoryFilter(todo.category)
             )}
             message="할 일을 모두 마쳤어요"
-            status={STATUS.TODO}
+            status={Status.TODO}
             onDrop={changeStatus}
           />
         </section>
@@ -99,11 +99,11 @@ function Home({ location, history }: HomeProps) {
           <TodoList
             todoList={todoList.filter(
               (todo) =>
-                todo.status === STATUS.INPROGRESS &&
+                todo.status === Status.INPROGRESS &&
                 categoryFilter(todo.category)
             )}
             message="진행중인 일을 모두 마쳤어요"
-            status={STATUS.INPROGRESS}
+            status={Status.INPROGRESS}
             onDrop={changeStatus}
           />
         </section>
@@ -113,10 +113,10 @@ function Home({ location, history }: HomeProps) {
           <TodoList
             todoList={todoList.filter(
               (todo) =>
-                todo.status === STATUS.DONE && categoryFilter(todo.category)
+                todo.status === Status.DONE && categoryFilter(todo.category)
             )}
             message="완료한 일이 아직 없네요"
-            status={STATUS.DONE}
+            status={Status.DONE}
             onDrop={changeStatus}
           />
         </section>

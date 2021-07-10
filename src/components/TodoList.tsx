@@ -1,10 +1,10 @@
 import React from "react";
 import { useDrop } from "react-dnd";
-import { DragTargetType } from "../constants";
+import { DragTargetType, Status } from "../constants";
 import Todo, { ToDo } from "./Todo";
 
 type TodoListProps = {
-  status: string;
+  status: Status;
   todoList: ToDo[];
   message: string;
   onDrop: (todo: ToDo) => Promise<void>;

@@ -1,8 +1,8 @@
-export const STATUS = {
-  TODO: "todo",
-  INPROGRESS: "in-progress",
-  DONE: "done",
-};
+export enum Status {
+  TODO = "todo",
+  INPROGRESS = "in-progress",
+  DONE = "done",
+}
 
 export enum Category {
   SELF_DEVELOPMENT = "self-development",

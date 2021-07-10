@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Category, STATUS } from "../constants";
+import { Category, Status } from "../constants";
 import { ToDo } from "./Todo";
 
 type UpdateFormProps = {
@@ -49,16 +49,16 @@ function UpdateForm({ todo, onUpdate, onDelete }: UpdateFormProps) {
         Status
       </label>
       <select id="status" className="todo_select" onChange={handleChange}>
-        <option value={STATUS.TODO} selected={newTodo.status === STATUS.TODO}>
+        <option value={Status.TODO} selected={newTodo.status === Status.TODO}>
           To Do
         </option>
         <option
-          value={STATUS.INPROGRESS}
-          selected={newTodo.status === STATUS.INPROGRESS}
+          value={Status.INPROGRESS}
+          selected={newTodo.status === Status.INPROGRESS}
         >
           In Progress
         </option>
-        <option value={STATUS.DONE} selected={newTodo.status === STATUS.DONE}>
+        <option value={Status.DONE} selected={newTodo.status === Status.DONE}>
           Done
         </option>
       </select>

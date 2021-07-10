@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { Category, STATUS } from "../constants";
+import { Category, Status } from "../constants";
 import { ToDo } from "./Todo";
 
 type AddFormProps = {
@@ -9,7 +9,7 @@ type AddFormProps = {
 const baseTodo = {
   id: Date.now(),
   title: "",
-  status: STATUS.TODO,
+  status: Status.TODO,
   category: Category.EMPTY,
   note: "",
 };
@@ -54,16 +54,16 @@ const AddForm = ({ onSave }: AddFormProps) => {
         Status
       </label>
       <select id="status" className="todo_select" onChange={handleChange}>
-        <option value={STATUS.TODO} selected={todo.status === STATUS.TODO}>
+        <option value={Status.TODO} selected={todo.status === Status.TODO}>
           To Do
         </option>
         <option
-          value={STATUS.INPROGRESS}
-          selected={todo.status === STATUS.INPROGRESS}
+          value={Status.INPROGRESS}
+          selected={todo.status === Status.INPROGRESS}
         >
           In Progress
         </option>
-        <option value={STATUS.DONE} selected={todo.status === STATUS.DONE}>
+        <option value={Status.DONE} selected={todo.status === Status.DONE}>
           Done
         </option>
       </select>
