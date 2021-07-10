@@ -46,7 +46,7 @@ const Todo = ({ todo, onDrop }: TodoProps) => {
   );
 
   return (
-    <li className="todo_item" key={todo.id} ref={drag} style={{ opacity }}>
+    <li className="todo_item" ref={drag} style={{ opacity }}>
       <Link to={`/todos/${todo.id}`}>
         <div
           className={`todo_icon ${
