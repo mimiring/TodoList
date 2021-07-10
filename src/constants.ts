@@ -13,12 +13,12 @@ export enum Category {
   EMPTY = "empty",
 }
 
-export const HTTP = {
-  PATCH: "PATCH",
-  POST: "POST",
-  PUT: "PUT",
-  DELETE: "DELETE",
-};
+export enum Http {
+  PATCH = "PATCH",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+}
 
 export const getCategoryEmoji = (categoryName: Category) => {
   let emoji = "";
