@@ -35,7 +35,9 @@ export const updateRequest = (todo) => {
 };
 
 export const getDetailRequest = (id) => {
-  return fetch(`${URL}?id=${id}`).then((response) => response.json());
+  return fetch(`${URL}?id=${id}`)
+    .then((response) => response.json())
+    .then((data) => data[0]);
 };
 
 export const searchRequest = (title) => {

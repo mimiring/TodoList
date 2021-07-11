@@ -42,7 +42,7 @@ const Detail = ({ match, history }: DetailProps) => {
   useEffect(() => {
     getDetailRequest(match.params.id)
       .then((todo) => {
-        setTodo(todo[0]);
+        setTodo(todo);
         setLoading(false);
       })
       .catch(() => {
