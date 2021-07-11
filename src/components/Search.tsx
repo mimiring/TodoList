@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchRequest } from "../services/request";
 import SearchBlankResult from "./SearchBlankResult";
+import { ToDo } from "../components/Todo";
 
 const Search = () => {
-  const [keyword, setKeyword] = useState();
-  const [todoList, setTodoList] = useState([]);
+  const [keyword, setKeyword] = useState<string>();
+  const [todoList, setTodoList] = useState<ToDo[]>([]);
   const history = useHistory();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const keyword = e.target.value;
     setKeyword(keyword);
 
