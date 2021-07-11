@@ -4,7 +4,11 @@ import { searchRequest } from "../services/request";
 import SearchBlankResult from "./SearchBlankResult";
 import { ToDo } from "../components/Todo";
 
-const Search = () => {
+type SearchProps = {
+  closeSearch: () => void;
+};
+
+const Search = ({ closeSearch }: SearchProps) => {
   const [keyword, setKeyword] = useState<string>();
   const [todoList, setTodoList] = useState<ToDo[]>([]);
   const history = useHistory();
@@ -22,6 +26,10 @@ const Search = () => {
     } else {
       setTodoList([]);
     }
+  };
+
+  const handleCloseClick = () => {
+    closeSearch();
   };
 
   return (
@@ -48,7 +56,7 @@ const Search = () => {
             value={keyword}
             placeholder="Search"
           />
-          <button className="search_close_btn">
+          <button className="search_close_btn" onClick={handleCloseClick}>
             <svg
               width="24"
               height="24"

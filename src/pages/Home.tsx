@@ -26,7 +26,11 @@ function Home({ location, history }: HomeProps) {
   };
 
   const handleSearchClick = () => {
-    setSearchVisible(!isSearchVisible);
+    setSearchVisible(true);
+  };
+
+  const closeSearch = () => {
+    setSearchVisible(false);
   };
 
   useEffect(() => {
@@ -122,7 +126,7 @@ function Home({ location, history }: HomeProps) {
         </section>
       </DndProvider>
       <Link to="/new" className="add_btn" />
-      {isSearchVisible && <Search />}
+      {isSearchVisible && <Search closeSearch={closeSearch} />}
     </>
   );
 }
