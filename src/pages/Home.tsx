@@ -38,7 +38,7 @@ function Home({ location, history }: HomeProps) {
   }, []);
 
   const countCategory = () => {
-    let categories: { [key: string]: number } = {};
+    let categories = {} as { [key in Category]: number };
     for (let i = 0; i < todoList.length; i++) {
       if (categories[todoList[i].category]) {
         categories[todoList[i].category]++;
@@ -47,7 +47,7 @@ function Home({ location, history }: HomeProps) {
       }
     }
 
-    return Object.entries(categories);
+    return Object.entries(categories) as [Category, number][];
   };
 
   const changeStatus = (newTodo: ToDo) => {

@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getCategoryEmoji } from "../constants";
+import { Category, getCategoryEmoji } from "../constants";
 
-function CategoryItem({ name, count }) {
+type CategoryItemProps = {
+  name: Category;
+  count: number;
+};
+
+function CategoryItem({ name, count }: CategoryItemProps) {
   const emoji = getCategoryEmoji(name);
 
   return (
@@ -16,7 +21,11 @@ function CategoryItem({ name, count }) {
   );
 }
 
-function CategoryList({ categories }) {
+type CategoryListProps = {
+  categories: [Category, number][];
+};
+
+function CategoryList({ categories }: CategoryListProps) {
   return (
     <ul className="category_list">
       {categories.map(([name, count]) => (
