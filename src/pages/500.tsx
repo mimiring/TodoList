@@ -1,6 +1,9 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 
-function ServerError({ history }) {
+type ServerErrorProps = RouteComponentProps;
+
+function ServerError({ history }: ServerErrorProps) {
   const handleBackbtnClick = () => {
     history.push("/");
   };
@@ -17,5 +20,4 @@ function ServerError({ history }) {
     </div>
   );
 }
-
 export default ServerError;
