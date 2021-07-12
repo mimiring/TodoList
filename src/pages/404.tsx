@@ -1,6 +1,9 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 
-function NotFound({ history }) {
+type NotFoundProps = RouteComponentProps;
+
+function NotFound({ history }: NotFoundProps) {
   const handleBackbtnClick = () => {
     history.push("/");
   };
