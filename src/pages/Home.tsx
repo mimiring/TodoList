@@ -6,7 +6,7 @@ import CategoryList from "../components/CategoryList";
 import { Category, Status } from "../constants";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Search from "../components/Search";
-import { ToDo } from "../components/Todo";
+import { ToDo } from "../type";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 type HomeProps = RouteComponentProps;

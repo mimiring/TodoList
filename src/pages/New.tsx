@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import AddForm from "../components/AddForm";
-import { ToDo } from "../components/Todo";
+import { ToDo } from "../type";
 import { addRequset } from "../services/request";
 
 type NewProps = RouteComponentProps;

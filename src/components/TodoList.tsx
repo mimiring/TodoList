@@ -1,7 +1,8 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { DragTargetType, Status } from "../constants";
-import Todo, { ToDo } from "./Todo";
+import { ToDo } from "../type";
+import Todo from "./Todo";
 
 type TodoListProps = {
   status: Status;

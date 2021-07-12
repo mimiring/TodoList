@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchRequest } from "../services/request";
 import SearchBlankResult from "./SearchBlankResult";
-import { ToDo } from "../components/Todo";
+import { ToDo } from "../type";
 
 type SearchProps = {
   closeSearch: () => void;

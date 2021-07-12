@@ -1,20 +1,8 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { Link } from "react-router-dom";
-import {
-  Category,
-  DragTargetType,
-  getCategoryEmoji,
-  Status,
-} from "../constants";
-
-export type ToDo = {
-  title: string;
-  status: Status;
-  category: Category;
-  note: string;
-  id: number;
-};
+import { DragTargetType, getCategoryEmoji, Status } from "../constants";
+import { ToDo } from "../type";
 
 type TodoProps = {
   todo: ToDo;

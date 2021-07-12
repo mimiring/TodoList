@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Category, Status } from "../constants";
-import { ToDo } from "./Todo";
+import { ToDo } from "../type";
 
 type AddFormProps = {
   onSave: (todo: ToDo) => Promise<void>;

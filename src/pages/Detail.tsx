@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { ToDo } from "../components/Todo";
+import { ToDo } from "../type";
 import UpdateForm from "../components/UpdateForm";
 import {
   deleteTodoRequest,
@@ -40,7 +40,7 @@ const Detail = ({ match, history }: DetailProps) => {
   };
 
   useEffect(() => {
-    getDetailRequest(match.params.id)
+    getDetailRequest(Number(match.params.id))
       .then((todo) => {
         setTodo(todo);
         setLoading(false);

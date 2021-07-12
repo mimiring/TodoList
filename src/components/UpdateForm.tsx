@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Category, Status } from "../constants";
-import { ToDo } from "./Todo";
+import { ToDo } from "../type";
 
 type UpdateFormProps = {
   todo: ToDo;
