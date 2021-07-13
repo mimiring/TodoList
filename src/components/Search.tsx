@@ -9,7 +9,7 @@ type SearchProps = {
 };
 
 const Search = ({ closeSearch }: SearchProps) => {
-  const [keyword, setKeyword] = useState<string>();
+  const [keyword, setKeyword] = useState<string>("");
   const [todoList, setTodoList] = useState<ToDo[]>([]);
   const history = useHistory();
 
